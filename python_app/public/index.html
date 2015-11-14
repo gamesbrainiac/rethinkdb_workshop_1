@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <ul class="messages">
+
+    </ul>
+    <script src="./jquery.js"></script>
+    <script src="./socket.io.js"></script>
+    <script>
+    $(document).ready(function() {
+      socket = io.connect();
+
+      socket.on('new_message', function(data) {
+        $('.messages').prepend("<li>" + data.new_val.message + "</li>");
+      });
+
+      $.get('/messages', function(messages) {
+        messages.map(function(message) {
+          $('.messages').append("<li>" + message.message + "</li>");
+        })
+      })
+    })
+    </script>
+  </body>
+</html>

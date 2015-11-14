@@ -1,0 +1,22 @@
+{
+  "name": "sender",
+  "version": "1.0.0",
+  "description": "This send data to rethinkdb every 5 seconds",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "RethinkDB",
+    "Workshop",
+    "Chris",
+    "Cates"
+  ],
+  "author": "Chris Cates",
+  "license": "ISC",
+  "dependencies": {
+    "cron": "^1.0.9",
+    "express": "^4.13.3",
+    "rethinkdbdash": "^2.1.17"
+  }
+}
