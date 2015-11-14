@@ -5,14 +5,15 @@
 
     </ul>
     <script src="./jquery.js"></script>
-    <script src="./socket.io.js"></script>
     <script>
     $(document).ready(function() {
-      socket = io.connect();
-
-      socket.on('new_message', function(data) {
-        $('.messages').prepend("<li>" + data.new_val.message + "</li>");
-      });
+      var ws = new WebSocket("ws://localhost:3002/ws");
+      ws.onopen = function() {
+         console.log('connected to app!');
+      };
+      ws.onmessage = function (evt) {
+         $('.messages').append('<li>' + evt.data + '</li>');
+      };
 
       $.get('/messages', function(messages) {
         messages.map(function(message) {
