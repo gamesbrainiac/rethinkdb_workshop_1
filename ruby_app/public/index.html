@@ -5,14 +5,14 @@
 
     </ul>
     <script src="./jquery.js"></script>
+    <script src="./socket.io.js"></script>
     <script>
     $(document).ready(function() {
-
       $.get('/messages', function(messages) {
         messages = JSON.parse(messages);
-        Object.keys(messages).forEach(function(id) {
-          $('.messages').append('<li>' + messages[id]['message'] + '</li>');
-        });
+        messages.map(function(message) {
+          $('.messages').append("<li>" + message.message + "</li>");
+        })
       })
     })
     </script>
